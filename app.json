@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "appProffy  ",
-    "slug": "proffy ",
+    "name": "App Proffy",
+    "slug": "app-proffy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

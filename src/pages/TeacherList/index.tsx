@@ -1,31 +1,65 @@
-import React from 'react';
-import {View, ScrollView,TextInput} from 'react-native'
+import React, { useState } from 'react';
+import {View, ScrollView,TextInput, Text} from 'react-native'
+import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import { Feather } from  '@expo/vector-icons'
 
 import PageHeader from '../../components/PageHeader'
 import TeacherItem from '../../components/TeacherItem';
 
 import styles from './styles'
 function TeacherList() {
+  const [isFilterVisible, setIsFilterVisible] = useState(false)
+
+  function handleToggleFilterVisible() {
+    setIsFilterVisible(!isFilterVisible)
+  }
+
   return (
     <View style={styles.container}>
-      <PageHeader title="Proffys Disponiveis">
+      <PageHeader 
+        title="Proffys Disponiveis"
+        headerRigth={(
+          <BorderlessButton 
+            onPress={handleToggleFilterVisible}
+          >
+            <Feather name="filter" size={20} color="#fff" />
+          </BorderlessButton>
+        )}
+      >
+        
+      { isFilterVisible && (
         <View style={styles.searchForm}>
           <Text style={styles.label}>Matéria</Text>
           <TextInput 
             style={styles.input}
             placeholder="Qual a matéria"
+            placeholderTextColor="#c1bccc"
           />
-
           <View style={styles.inputGroup}>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Dia da Semana</Text>
               <TextInput 
                 style={styles.input}
                 placeholder="Qual o dia ?"
+                placeholderTextColor="#c1bccc"
+              />             
+            </View>
+            <View style={styles.inputBlock}>
+              <Text style={styles.label}>Horario</Text>
+              <TextInput 
+                style={styles.input}
+                placeholder="Qula Horario ?"
+                placeholderTextColor="#c1bccc"
               />             
             </View>
           </View>
+          <RectButton style={styles.submitButton}>
+            <Text style={styles.submitButtonText}>
+              Filtrar
+            </Text>
+          </RectButton>
         </View>
+        )}
       </PageHeader>
       <ScrollView 
         style={styles.teacherList} 
