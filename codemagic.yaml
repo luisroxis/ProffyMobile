@@ -6,8 +6,8 @@ workflows:
         name: React Native App
         environment:
             vars:
-                XCODE_WORKSPACE: "SWAPTECH"
-                XCODE_SCHEME: "SWAPTECH"
+                XCODE_WORKSPACE: "ProffyMobileProject"
+                XCODE_SCHEME: "ProffyMobileProject"
             node: latest
         scripts:
             - npm install
